@@ -48,7 +48,7 @@ showUserInfo model =
             Html.text "loading"
 
         RemoteData.Success user ->
-            Html.text user.team.name
+            Html.text user.teamName
 
         RemoteData.Failure _ ->
             Html.text "login"
