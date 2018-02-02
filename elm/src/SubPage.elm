@@ -132,14 +132,13 @@ init turbulencePath route =
                     , csrfToken = ""
                     }
 
-        Routes.SelectTeam ->
-            let
-                redirect =
-                    Maybe.withDefault "" <| QueryString.one QueryString.string "redirect" route.queries
-            in
-                superDupleWrap ( SelectTeamModel, SelectTeamMsg ) <|
-                    TeamSelection.init { title = setTitle } redirect
-
+        -- Routes.SelectTeam ->
+        --     let
+        --         redirect =
+        --             Maybe.withDefault "" <| QueryString.one QueryString.string "redirect" route.queries
+        --     in
+        --         superDupleWrap ( SelectTeamModel, SelectTeamMsg ) <|
+        --             TeamSelection.init { title = setTitle } redirect
         Routes.TeamLogin teamName ->
             superDupleWrap ( LoginModel, LoginMsg ) <|
                 Login.init { title = setTitle } teamName (QueryString.one QueryString.string "redirect" route.queries)

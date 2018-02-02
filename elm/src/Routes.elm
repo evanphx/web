@@ -15,7 +15,7 @@ type Route
     | Job String String String
     | OneOffBuild String
     | Pipeline String String
-    | SelectTeam
+      -- | SelectTeam
     | TeamLogin String
 
 
@@ -56,9 +56,10 @@ job =
     Job := static "teams" </> string </> static "pipelines" </> string </> static "jobs" </> string
 
 
-login : Route.Route Route
-login =
-    SelectTeam := static "login"
+
+-- ogin : Route.Route Route
+-- login =
+--     SelectTeam := static "auth" </> static "login"
 
 
 pipeline : Route.Route Route
@@ -106,7 +107,8 @@ sitemap =
         , resource
         , betaResource
         , job
-        , login
+
+        -- , login
         , oneOffBuild
         , pipeline
         , teamLogin
@@ -140,9 +142,8 @@ toString route =
         Pipeline teamName pipelineName ->
             reverse pipeline [ teamName, pipelineName ]
 
-        SelectTeam ->
-            reverse login []
-
+        -- SelectTeam ->
+        --     reverse login []
         TeamLogin teamName ->
             reverse teamLogin [ teamName ]
 
